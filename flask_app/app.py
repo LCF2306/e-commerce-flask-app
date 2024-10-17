@@ -1,11 +1,16 @@
 from flask import Flask, render_template
+from dotenv import load_dotenv
+import os
 from pymongo import MongoClient
+
+# Load environment variables from .env file
+load_dotenv()
 
 # Create the Flask application
 app = Flask(__name__)
 
-# MongoDB Atlas connection string
-mongo_uri = "mongodb+srv://RpdCyclone:actionsoverwords@shopcluster.tnrgm.mongodb.net/?retryWrites=true&w=majority&appName=ShopCluster"
+# MongoDB Atlas connection string from environment variables
+mongo_uri = os.getenv("MONGODB_URI")
 
 # Connect to MongoDB
 try:
